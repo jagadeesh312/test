@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Secure MCQ Exam</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-shell">
+  <div id="appLoadingOverlay" class="app-loading-overlay app-loading-first-visit" role="status" aria-live="polite">
+    <div class="app-loading-card">
+      <img class="app-loading-logo" src="https://i.pinimg.com/736x/0a/aa/9c/0aaa9c5a4bc7882d296d5164cad798b6.jpg" alt="Secure MCQ Exam" fetchpriority="high">
+      <iframe class="app-loading-animation" data-loading-animation title="Loading"></iframe>
+      <p data-loading-message>Loading your exam workspace...</p>
+    </div>
+  </div>
+  <main class="auth-layout login-layout">
+    <section class="auth-panel login-panel">
+      <form id="loginForm" class="panel form-card">
+        <div class="form-header">
+          <p class="eyebrow">Access Portal</p>
+          <h2>Login</h2>
+        </div>
+        <label>
+          <span>Email</span>
+          <input id="email" type="email" placeholder="Enter email" required>
+        </label>
+        <label>
+          <span>Password</span>
+          <input id="password" type="password" placeholder="Enter password" required>
+        </label>
+        <button class="btn btn-primary" type="submit">Login</button>
+        <div class="demo-credentials role-pills">
+          <button class="chip" type="button" data-email="student@example.com" data-password="student123">Student</button>
+          <button class="chip" type="button" data-email="teacher@example.com" data-password="teacher123">Teacher</button>
+        </div>
+        <p id="loginMessage" class="status-text" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+  <script type="module" src="js/security.js"></script>
+  <script type="module" src="js/auth.js"></script>
+</body>
+</html>

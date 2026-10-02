@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Test | Secure MCQ Exam</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="page-wrap narrow create-test-page">
+    <header class="panel create-test-header">
+      <div>
+        <p class="eyebrow">Teacher Workspace</p>
+        <h1>Create Test</h1>
+        <p class="muted">Build and assign a secure MCQ exam with a clean mobile-friendly workflow.</p>
+      </div>
+      <a class="btn btn-secondary back-link" href="teacher-dashboard.html">
+        <i class="nav-icon" data-lucide="arrow-left"></i>
+        <span>Back</span>
+      </a>
+    </header>
+
+    <form id="testForm" class="stack-form create-test-form">
+      <section class="panel form-section">
+        <div class="form-section-heading">
+          <p class="eyebrow">Section 1</p>
+          <h2>Basic Info</h2>
+        </div>
+        <div class="field-grid">
+          <label>
+            <span>Test Name</span>
+            <input id="testName" type="text" placeholder="Cloud Computing Midterm" required>
+          </label>
+          <label>
+            <span>Duration (minutes)</span>
+            <input id="duration" type="number" min="1" value="20" required>
+          </label>
+          <label>
+            <span>Total Questions</span>
+            <input id="totalQuestions" type="number" min="1" value="5" required>
+          </label>
+        </div>
+      </section>
+
+      <section class="panel form-section">
+        <div class="form-section-heading">
+          <p class="eyebrow">Section 2</p>
+          <h2>Exam Schedule</h2>
+        </div>
+        <div class="field-grid">
+          <label>
+            <span>Start date &amp; time</span>
+            <input id="startTime" type="datetime-local" step="60" required>
+          </label>
+          <label>
+            <span>End date &amp; time</span>
+            <input id="endTime" type="datetime-local" step="60" required>
+          </label>
+        </div>
+        <p class="muted">The end date and time must be later than the start. Students can open the exam only during this window.</p>
+      </section>
+
+      <section class="panel form-section">
+        <div class="form-section-heading">
+          <p class="eyebrow">Section 3</p>
+          <h2>Assignment</h2>
+        </div>
+        <div class="field-grid">
+          <label>
+            <span>Assign To</span>
+            <select id="assignedStudent">
+              <option value="all">All students</option>
+            </select>
+          </label>
+          <label>
+            <span>Attempt Limit Per Student</span>
+            <input id="attemptLimit" type="number" min="1" value="1" required>
+          </label>
+        </div>
+      </section>
+
+      <section class="panel form-section">
+        <div class="form-section-heading">
+          <p class="eyebrow">Section 4</p>
+          <h2>Upload Questions</h2>
+        </div>
+        <label class="upload-dropzone" for="csvFile">
+          <input id="csvFile" type="file" accept=".csv">
+          <i class="nav-icon" data-lucide="cloud-upload"></i>
+          <strong>Upload CSV File</strong>
+          <span>Upload CSV file containing questions and answers.</span>
+          <small>Tap to choose a file</small>
+        </label>
+
+        <details class="csv-example">
+          <summary>View CSV example format</summary>
+          <p class="muted">Question,OptionA,OptionB,OptionC,OptionD,CorrectAnswer</p>
+        </details>
+        <div id="uploadProgressCard" class="upload-progress-card hidden" aria-live="polite">
+          <div class="section-row">
+            <div>
+              <strong id="uploadStatusTitle">Preparing upload</strong>
+              <p id="uploadStatusText" class="muted">Waiting for file...</p>
+            </div>
+            <span id="uploadCountBadge" class="status-pill">0 questions</span>
+          </div>
+          <div class="progress-track" aria-hidden="true">
+            <div id="uploadProgressBar" class="progress-fill"></div>
+          </div>
+          <p id="uploadProgressMeta" class="muted">0%</p>
+        </div>
+        <div id="uploadPreview" class="upload-preview hidden"></div>
+      </section>
+
+      <section class="panel form-section">
+        <div class="section-row">
+          <div class="form-section-heading">
+            <p class="eyebrow">Section 5</p>
+            <h2>Manual Questions</h2>
+          </div>
+          <button id="addQuestionBtn" class="btn btn-secondary" type="button">Add Question</button>
+        </div>
+        <div id="questionBuilder" class="question-builder"></div>
+      </section>
+
+      <section class="panel form-section">
+        <div class="actions-row">
+          <a class="btn btn-secondary" href="teacher-dashboard.html">Cancel</a>
+          <button class="btn btn-primary" type="submit">Create Test</button>
+        </div>
+        <p id="testMessage" class="status-text" aria-live="polite"></p>
+      </section>
+    </form>
+  </main>
+  <script type="module" src="js/security.js"></script>
+  <script type="module" src="js/create-test.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

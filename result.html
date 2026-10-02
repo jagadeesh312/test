@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Result | Secure MCQ Exam</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="page-wrap narrow">
+    <section class="panel result-panel">
+      <div class="result-hero">
+        <p class="eyebrow">Exam Result</p>
+        <h1 id="resultTitle">Result Summary</h1>
+        <div id="progressCircle" class="progress-circle">
+          <div class="progress-inner">
+            <span class="muted">Score</span>
+            <strong id="scorePercent">0%</strong>
+          </div>
+        </div>
+      </div>
+      <div class="result-stats">
+        <article class="stat-card">
+          <span>Score</span>
+          <strong id="scoreValue"></strong>
+        </article>
+        <article class="stat-card">
+          <span>Correct</span>
+          <strong id="correctValue"></strong>
+        </article>
+        <article class="stat-card">
+          <span>Wrong</span>
+          <strong id="wrongValue"></strong>
+        </article>
+        <article class="stat-card">
+          <span>Time Taken</span>
+          <strong id="timeTakenValue"></strong>
+        </article>
+      </div>
+      <div class="panel subtle-panel">
+        <h2>Exam Summary</h2>
+        <p id="cheatSummary" class="muted"></p>
+      </div>
+      <section class="panel">
+        <div class="section-row">
+          <h2>Answer Review</h2>
+          <span class="muted">Correct and wrong answers</span>
+        </div>
+        <div id="reviewList" class="question-builder"></div>
+      </section>
+      <div class="actions-inline">
+        <a class="btn btn-secondary" href="student-tests.html">Back to Dashboard</a>
+        <a class="btn btn-primary" href="student-history.html">View History</a>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="js/security.js"></script>
+  <script type="module" src="js/result.js"></script>
+</body>
+</html>

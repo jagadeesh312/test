@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Redirect | Secure MCQ Exam</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-shell">
+  <section class="panel form-card">
+    <p class="eyebrow">Redirecting</p>
+    <h1>Opening your dashboard...</h1>
+    <p class="muted">Please wait.</p>
+  </section>
+  <script type="module">
+    import { bootstrapApp, getHomePageForRole, requireAuth } from "./js/app.js";
+    await bootstrapApp();
+    const session = requireAuth();
+    window.location.href = getHomePageForRole(session.role);
+  </script>
+</body>
+</html>

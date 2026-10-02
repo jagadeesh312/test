@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exam | Secure MCQ Exam</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="exam-page">
+    <div id="examSubmitOverlay" class="exam-submit-overlay hidden" role="status" aria-live="assertive" aria-label="Submitting exam">
+      <div class="exam-submit-card">
+        <iframe class="exam-submit-animation" src="https://lottie.host/embed/22463ed9-ffd7-4063-ab44-350005e983a1/oYBxuKdYUC.lottie" title="Submitting your exam"></iframe>
+        <h2>Submitting your exam</h2>
+        <p>Please wait while we save your answers and prepare your result.</p>
+      </div>
+    </div>
+    <div id="examPauseOverlay" class="exam-pause-overlay hidden" aria-live="assertive">
+      <div class="exam-pause-card">
+        <p class="eyebrow">Secure Pause</p>
+        <h2>Exam Paused. Return to the exam window.</h2>
+        <p id="pauseReasonText" class="muted">Your session will resume automatically when focus and fullscreen are restored.</p>
+      </div>
+    </div>
+
+    <section id="preExamScreen" class="panel exam-main-card pre-exam-card">
+      <p class="eyebrow">Before Starting</p>
+      <h1 id="examTitle" class="exam-title">Loading test...</h1>
+      <p class="lead">Please enter fullscreen first. After fullscreen is active, tap Start Exam.</p>
+      <ul class="rules-list">
+        <li>Fullscreen is required during the exam</li>
+        <li>If you exit fullscreen, the exam will auto-submit</li>
+        <li>Use the Start button only after fullscreen turns on</li>
+      </ul>
+      <div class="pre-exam-actions">
+        <button id="fullscreenBtn" class="btn btn-secondary btn-block" type="button">Enter Full Screen</button>
+        <button id="startExamBtn" class="btn btn-primary btn-block" type="button" disabled>Start Exam</button>
+      </div>
+      <section class="panel subtle-panel camera-consent-card">
+        <div class="section-row">
+          <h2>Camera Monitoring</h2>
+          <span id="cameraStatusBadge" class="status-pill">Not enabled</span>
+        </div>
+        <p class="muted">Camera access is optional and will only be used after your explicit permission.</p>
+        <div class="pre-exam-actions">
+          <button id="cameraConsentBtn" class="btn btn-secondary btn-block" type="button">Enable Camera</button>
+        </div>
+        <video id="cameraPreview" class="camera-preview hidden" autoplay muted playsinline></video>
+        <p id="cameraMessage" class="status-text" aria-live="polite"></p>
+      </section>
+      <p id="preExamMessage" class="muted">Fullscreen is required before starting.</p>
+    </section>
+
+    <section id="liveExamScreen" class="hidden">
+      <header class="exam-topbar panel">
+        <div>
+          <p class="eyebrow">Exam Mode</p>
+          <h1 class="exam-title" id="liveExamTitle">Loading test...</h1>
+        </div>
+      <div class="exam-meta">
+        <span class="chip timer-chip">Time <strong id="timer">00:00</strong></span>
+        <span class="chip">Question <strong id="questionNumber">1 of 1</strong></span>
+        <span class="chip" id="visibilityWarnings">Violations 0/4</span>
+        <span class="chip" id="focusStatus">Focused</span>
+        <span class="chip" id="connectionStatus">Online</span>
+        <button id="submitBtn" class="btn btn-primary" type="button">Submit</button>
+      </div>
+      </header>
+
+      <section class="panel exam-main-card">
+        <div class="dashboard-header">
+          <span class="muted">Answer all questions and submit when finished.</span>
+          <span id="progressText" class="muted"></span>
+        </div>
+
+        <article class="question-card">
+          <p class="question-number">Current Question</p>
+          <h2 id="questionText" class="question-text"></h2>
+          <p id="questionMeta" class="muted"></p>
+          <div id="optionsList" class="option-list"></div>
+        </article>
+      </section>
+
+      <section class="panel navigator-card">
+        <div class="section-row">
+          <h2>Question Navigator</h2>
+          <span class="muted">Tap to jump</span>
+        </div>
+        <div id="questionNav" class="question-nav"></div>
+      </section>
+
+      <section class="panel navigator-card">
+        <div class="section-row">
+          <h2>Security Feed</h2>
+          <span class="muted">Latest activity</span>
+        </div>
+        <div id="violationFeed" class="violation-feed"></div>
+      </section>
+
+      <section class="panel navigator-card">
+        <div class="section-row">
+          <h2>Session Monitor</h2>
+          <span class="muted">Fast local telemetry</span>
+        </div>
+        <div id="activitySummary" class="violation-feed"></div>
+      </section>
+
+      <footer class="exam-bottom-bar">
+        <button id="prevBtn" class="btn btn-secondary" type="button">Previous</button>
+        <button id="nextBtn" class="btn btn-success" type="button">Next</button>
+      </footer>
+    </section>
+  </main>
+  <script type="module" src="js/security.js"></script>
+  <script type="module" src="js/exam.js"></script>
+</body>
+</html>

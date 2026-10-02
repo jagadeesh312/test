@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teacher Reports | Secure MCQ Exam</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="teacher-shell">
+    <aside class="teacher-sidebar panel">
+      <div>
+        <p class="eyebrow">Teacher Panel</p>
+        <h1 class="sidebar-title">Secure MCQ</h1>
+      </div>
+      <nav class="nav-list">
+        <a href="teacher-dashboard.html"><span class="icon-label"><i class="nav-icon" data-lucide="house"></i><span>Home</span></span></a>
+        <a href="teacher-results.html"><span class="icon-label"><i class="nav-icon" data-lucide="bar-chart-3"></i><span>Results</span></span></a>
+        <a class="active" href="teacher-reports.html"><span class="icon-label"><i class="nav-icon" data-lucide="file-down"></i><span>Reports</span></span></a>
+        <a href="create-test.html"><span class="icon-label"><i class="nav-icon" data-lucide="plus"></i><span>Create Test</span></span></a>
+        <a href="teacher-profile.html"><span class="icon-label"><i class="nav-icon" data-lucide="user"></i><span>Profile</span></span></a>
+      </nav>
+    </aside>
+    <main class="teacher-main">
+      <header class="teacher-topbar panel">
+        <div>
+          <p class="eyebrow">Reports</p>
+          <h2 id="pageTitle">Activity Reports</h2>
+        </div>
+        <div class="teacher-header-actions">
+          <a class="teacher-action-button" href="teacher-profile.html" aria-label="Profile"><i class="nav-icon" data-lucide="user"></i></a>
+        </div>
+      </header>
+      <section id="pageContent" class="teacher-content"></section>
+    </main>
+  </div>
+  <nav class="mobile-bottom-nav">
+    <a href="teacher-dashboard.html" aria-label="Home"><span class="mobile-nav-icon"><i class="nav-icon" data-lucide="house"></i></span><span class="desktop-only">Home</span></a>
+    <a href="create-test.html" aria-label="Create Test"><span class="mobile-nav-icon"><i class="nav-icon" data-lucide="plus"></i></span><span class="desktop-only">Create</span></a>
+    <a href="teacher-results.html" aria-label="Results"><span class="mobile-nav-icon"><i class="nav-icon" data-lucide="bar-chart-3"></i></span><span class="desktop-only">Results</span></a>
+    <a class="active" href="teacher-reports.html" aria-label="Reports"><span class="mobile-nav-icon"><i class="nav-icon" data-lucide="file-down"></i></span><span class="desktop-only">Reports</span></a>
+    <a href="teacher-profile.html" aria-label="Profile"><span class="mobile-nav-icon"><i class="nav-icon" data-lucide="user"></i></span><span class="desktop-only">Profile</span></a>
+  </nav>
+  <script type="module" src="js/security.js"></script>
+  <script type="module" src="js/teacher-reports.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

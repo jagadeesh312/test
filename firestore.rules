@@ -1,0 +1,99 @@
+rules_version = '2';
+
+// Production baseline for the mcq-act examination app.
+// Every users/{uid} document must use the Firebase Authentication UID as its ID.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isSelf(userId) {
+      return signedIn() && request.auth.uid == userId;
+    }
+
+    function isTeacher() {
+      return signedIn()
+        && exists(/databases/$(database)/documents/users/$(request.auth.uid))
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ["teacher", "admin"];
+    }
+
+    function isAdmin() {
+      return signedIn()
+        && exists(/databases/$(database)/documents/users/$(request.auth.uid))
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == "admin";
+    }
+
+    function ownsTest(testId) {
+      return isTeacher()
+        && exists(/databases/$(database)/documents/tests/$(testId))
+        && get(/databases/$(database)/documents/tests/$(testId)).data.createdBy == request.auth.uid;
+    }
+
+    match /users/{userId} {
+      // The current browser client loads user names to show assignment labels.
+      // Replace this with a restricted directory collection before production.
+      allow read: if signedIn();
+      // Teachers manage student, teacher, and admin profiles from the
+      // dedicated user-management page. Authentication accounts and these
+      // profile documents must be created together for a new account to log in.
+      allow create, update, delete: if isTeacher();
+      // One-time migration for existing teacher/student profiles that were
+      // created before Firebase Auth UIDs were used as document IDs.
+      allow create: if isSelf(userId)
+        && request.resource.data.email == request.auth.token.email
+        && request.resource.data.role in ["student", "teacher"];
+      allow update: if isSelf(userId)
+        && request.resource.data.role == resource.data.role;
+    }
+
+    // Compatibility rule: the present client reads tests in the browser.
+    // Move correct answers to a trusted backend before production.
+    match /tests/{testId} {
+      allow read: if signedIn();
+      allow create: if isTeacher()
+        && request.resource.data.createdBy == request.auth.uid;
+      allow update, delete: if ownsTest(testId);
+    }
+
+    match /attempts/{attemptId} {
+      allow read: if signedIn();
+      allow create: if isSelf(request.resource.data.studentId);
+      allow update: if isSelf(resource.data.studentId)
+        && request.resource.data.studentId == resource.data.studentId;
+      allow delete: if false;
+    }
+
+    match /results/{resultId} {
+      allow read: if signedIn();
+      allow create: if isSelf(request.resource.data.studentId);
+      allow update, delete: if ownsTest(resource.data.testId);
+    }
+
+    match /violations/{violationId} {
+      allow read: if signedIn();
+      allow create: if isSelf(request.resource.data.studentId);
+      allow update, delete: if false;
+    }
+
+    match /camera_snapshots/{snapshotId} {
+      allow read: if signedIn();
+      allow create: if isSelf(request.resource.data.studentId);
+      allow update, delete: if false;
+    }
+
+    match /sessions/{userId} {
+      allow get, create, update: if isSelf(userId) || isTeacher();
+      allow delete: if isSelf(userId) || isTeacher();
+    }
+
+    match /security_config/{configId} {
+      allow read: if signedIn();
+      allow create, update, delete: if isTeacher();
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

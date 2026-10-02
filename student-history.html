@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test History | Secure MCQ Exam</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="student-shell">
+    <aside class="student-sidebar panel">
+      <div>
+        <p class="eyebrow">Student Portal</p>
+        <h1 class="sidebar-title">Secure MCQ</h1>
+      </div>
+      <nav class="nav-list">
+        <a href="student-dashboard.html"><span class="icon-label"><i class="nav-icon" data-lucide="house"></i><span>Home</span></span></a>
+        <a href="student-tests.html"><span class="icon-label"><i class="nav-icon" data-lucide="file-text"></i><span>Available Tests</span></span></a>
+        <a class="active" href="student-history.html"><span class="icon-label"><i class="nav-icon" data-lucide="clock-3"></i><span>Test History</span></span></a>
+        <a href="student-marks.html"><span class="icon-label"><i class="nav-icon" data-lucide="bar-chart-3"></i><span>Marks</span></span></a>
+        <a href="student-profile.html"><span class="icon-label"><i class="nav-icon" data-lucide="user"></i><span>Profile</span></span></a>
+      </nav>
+      <button id="logoutBtn" class="btn btn-secondary" type="button"><span class="icon-label"><i class="nav-icon" data-lucide="log-out"></i><span>Logout</span></span></button>
+    </aside>
+
+    <main class="student-main">
+      <header class="student-topbar panel">
+        <div>
+          <p class="eyebrow">Test History</p>
+          <h2 id="pageTitle">Loading...</h2>
+        </div>
+      </header>
+      <section id="pageContent" class="student-content"></section>
+    </main>
+  </div>
+
+  <nav class="mobile-bottom-nav">
+    <a href="student-dashboard.html" aria-label="Home"><span class="mobile-nav-icon"><i class="nav-icon" data-lucide="house"></i></span><span class="desktop-only">Home</span></a>
+    <a href="student-tests.html" aria-label="Tests"><span class="mobile-nav-icon"><i class="nav-icon" data-lucide="file-text"></i></span><span class="desktop-only">Tests</span></a>
+    <a class="active" href="student-history.html" aria-label="History"><span class="mobile-nav-icon"><i class="nav-icon" data-lucide="clock-3"></i></span><span class="desktop-only">History</span></a>
+    <a href="student-marks.html" aria-label="Marks"><span class="mobile-nav-icon"><i class="nav-icon" data-lucide="bar-chart-3"></i></span><span class="desktop-only">Marks</span></a>
+    <a href="student-profile.html" aria-label="Profile"><span class="mobile-nav-icon"><i class="nav-icon" data-lucide="user"></i></span><span class="desktop-only">Profile</span></a>
+  </nav>
+  <script type="module" src="js/security.js"></script>
+  <script type="module" src="js/student-history.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

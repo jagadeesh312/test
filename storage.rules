@@ -1,0 +1,24 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isTeacher() {
+      return signedIn()
+        && firestore.exists(/databases/(default)/documents/users/$(request.auth.uid))
+        && firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role in ["teacher", "admin"];
+    }
+
+    match /camera_snapshots/{studentId}/{examId}/{attemptId}/{fileName} {
+      allow create: if signedIn()
+        && request.auth.uid == studentId
+        && request.resource.contentType.matches('image/.*')
+        && request.resource.size < 2 * 1024 * 1024;
+      allow read: if signedIn() && (request.auth.uid == studentId || isTeacher());
+      allow update, delete: if false;
+    }
+  }
+}
