@@ -22,22 +22,22 @@ A Firebase-ready prototype for secure online MCQ exams with student and teacher 
 ```text
 secure-mcq-exam
 +-- backend
-�   +-- controllers
-�   +-- routes
-�   +-- server.js
+¦   +-- controllers
+¦   +-- routes
+¦   +-- server.js
 +-- css
-�   +-- style.css
+¦   +-- style.css
 +-- database
-�   +-- firebaseConfig.js
+¦   +-- firebaseConfig.js
 +-- js
-�   +-- app.js
-�   +-- auth.js
-�   +-- create-test.js
-�   +-- dashboard.js
-�   +-- data.js
-�   +-- exam.js
-�   +-- result.js
-�   +-- security.js
+¦   +-- app.js
+¦   +-- auth.js
+¦   +-- create-test.js
+¦   +-- dashboard.js
+¦   +-- data.js
+¦   +-- exam.js
+¦   +-- result.js
+¦   +-- security.js
 +-- create-test.html
 +-- dashboard.html
 +-- exam.html
@@ -66,3 +66,38 @@ Open `login.html` in a local web server. Example with VS Code Live Server or any
 Question,OptionA,OptionB,OptionC,OptionD,CorrectAnswer
 What is Cloud?,Internet,Hardware,Software,Network,A
 ```
+# 🧪 Test Repository
+
+This repository is used for testing, experimenting, and learning GitHub and web development workflows.
+
+## 🎯 Purpose
+
+The main purpose of this repository is to:
+
+- 🧪 Test new ideas
+- 💻 Experiment with code
+- 🔧 Try new features
+- 📚 Practice Git and GitHub
+- 🚀 Test web development concepts
+
+## 🛠️ Technologies
+
+- HTML
+- CSS
+- JavaScript
+
+## 📂 Project Status
+
+🚧 **Experimental / Testing**
+
+This repository may contain small experiments, prototypes, and temporary projects.
+
+## 👨‍💻 Developer
+
+**Jagadeesh SP**
+
+GitHub: `@jagadeesh312`
+
+---
+
+> Learn → Experiment → Build → Improve 🚀
